@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-hasOwnProperty </title>
+</head>
+<body>
+<script>
+    /*
+     为了判断一个对象是否包含自定义属性而不是原型链上的属性， 我们需要使用继承自 Object.prototype 的 hasOwnProperty 方法。
+     hasOwnProperty 是 JavaScript 中唯一一个处理属性但是不查找原型链的函数
+     注意: 通过判断一个属性是否 undefined 是不够的。 因为一个属性可能确实存在，只不过它的值被设置为 undefined。
+    */
+
+    Object.prototype.bar = 1;
+    var foo = {goo : undefined};
+
+    console.log(foo.bar); //1
+    console.log("bar" in foo); //true
+
+    console.log(foo.hasOwnProperty('bar')); //false
+    console.log(foo.hasOwnProperty('goo')); //true
+
+    /*
+     只有 hasOwnProperty 可以给出正确和期望的结果，这在遍历对象的属性时会很有用。 没有其它方法可以用来排除原型链上的属性，而不是定义在对象自身上的属性
+    */
+
+
+</script>
+</body>
+</html>

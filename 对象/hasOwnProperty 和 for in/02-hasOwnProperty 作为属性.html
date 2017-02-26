@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-hasOwnProperty 作为属性</title>
+</head>
+<body>
+
+<script>
+    /*
+     JavaScript 不会保护 hasOwnProperty 被非法占用，因此如果一个对象碰巧存在这个属性， 就需要使用外部的 hasOwnProperty 函数来获取正确的结果。
+    */
+    var foo = {
+        hasOwnProperty: function() {
+            return false;
+        },
+        bar: 'Here be dragons'
+    }
+
+    console.log(foo.hasOwnProperty('bar')); //false
+
+    // 使用其它对象的 hasOwnProperty，并将其上下文设置为foo
+    console.log(({}).hasOwnProperty.call(foo, 'bar')); // true
+
+    /*
+     结论
+
+     当检查对象上某个属性是否存在时，hasOwnProperty 是唯一可用的方法。 同时在使用 for in loop 遍历对象时，推荐总是使用 hasOwnProperty 方法， 这将会避免原型对象扩展带来的干扰。*/
+</script>
+</body>
+</html>
