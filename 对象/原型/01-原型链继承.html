@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-原型链继承</title>
+</head>
+<body>
+<script>
+    /*
+     JavaScript 不包含传统的类继承模型，而是使用 prototype 原型模型。
+
+     虽然这经常被当作是 JavaScript 的缺点被提及，其实基于原型的继承模型比传统的类继承还要强大。 实现传统的类继承模型是很简单，但是实现 JavaScript 中的原型继承则要困难的多。 (It is for example fairly trivial to build a classic model on top of it, while the other way around is a far more difficult task.)
+
+     由于 JavaScript 是唯一一个被广泛使用的基于原型继承的语言，所以理解两种继承模式的差异是需要一定时间的。
+
+     第一个不同之处在于 JavaScript 使用原型链的继承方式。
+
+     注意: 简单的使用 Bar.prototype = Foo.prototype 将会导致两个对象共享相同的原型。 因此，改变任意一个对象的原型都会影响到另一个对象的原型，在大多数情况下这不是希望的结果。
+    */
+    function Foo(){
+        this.value = 42;
+        this.car = {
+            type : ["汽车1", "汽车2", "汽车3"]
+        }
+    }
+    Foo.prototype = {
+        method : function(){
+            console.log('method');
+        }
+    }
+
+    function Bar(){}
+
+    // 设置Bar的原型对象Foo的实例对象
+    Bar.prototype = new Foo();
+    Bar.prototype.foo = 'hello world';
+
+    // 修正构造器属性
+    Bar.prototype.constructor = Bar;
+
+    var test01 = new Bar();
+    var test02 = new Bar();
+
+
+    test01.method(); // method 能够拥有父构造函数的原型方法
+    console.log(test01.car.type); //汽车 能有拥有父构造函数的实例属性
+
+    test01.car.type.push("银河战舰");
+    console.log(test01.car.type);
+    console.log(test02.car.type);
+
+    /*
+     上面的例子中，test 对象从 Bar.prototype 和 Foo.prototype 继承下来；因此， 它能访问 Foo 的原型方法 method。同时，它也能够访问那个定义在原型上的 Foo 实例属性 value。 需要注意的是 new Bar() 不会创造出一个新的 Foo 实例，而是 重复使用它原型上的那个实例；因此，所有的 Bar 实例都会共享相同的 value 属性。
+    */
+</script>
+</body>
+</html>
