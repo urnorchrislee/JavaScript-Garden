@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-属性查找</title>
+</head>
+<body>
+
+<script>
+    /*
+     当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。
+
+     到查找到达原型链的顶部 - 也就是 Object.prototype - 但是仍然没有找到指定的属性，就会返回 undefined。
+
+     注意: 不要使用 Bar.prototype = Foo，因为这不会执行 Foo 的原型，而是指向函数 Foo。 因此原型链将会回溯到 Function.prototype 而不是 Foo.prototype，因此 method 将不会在 Bar 的原型链上。
+    */
+</script>
+
+</body>
+</html>
