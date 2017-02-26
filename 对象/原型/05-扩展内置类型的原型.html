@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-扩展内置类型的原型</title>
+</head>
+<body>
+<script>
+    function MyArray(){}
+    MyArray.prototype = new Array();
+    MyArray.prototype.des = "描述信息";
+    MyArray.prototype.logDes = function(){
+        console.log("打印描述信息");
+    };
+
+    var myArr = new MyArray();
+    console.log(myArr.des);
+    myArr.logDes();
+
+    /*
+     一个错误特性被经常使用，那就是扩展 Object.prototype 或者其他内置类型的原型对象。
+
+     这种技术被称之为 monkey patching 并且会破坏封装。虽然它被广泛的应用到一些 JavaScript 类库中比如 Prototype, 但是我仍然不认为为内置类型添加一些非标准的函数是个好主意。
+
+     扩展内置类型的唯一理由是为了和新的 JavaScript 保持一致，比如 Array.forEach。
+    */
+
+</script>
+</body>
+</html>
