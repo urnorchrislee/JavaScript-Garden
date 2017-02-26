@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-for in 循环</title>
+</head>
+<body>
+<script>
+    /* 和 in 操作符一样，for in 循环同样在查找对象属性时遍历原型链上的所有属性。 */
+    // 修改 Object.prototype
+    Object.prototype.bar = 1;
+
+    var foo = {moo: 2};
+    for(var i in foo) {
+        console.log(i); // 输出两个属性：bar 和 moo
+    }
+
+    /*
+     由于不可能改变 for in 自身的行为，因此有必要过滤出那些不希望出现在循环体中的属性， 这可以通过 Object.prototype 原型上的 hasOwnProperty 函数来完成。
+    */
+
+    // foo 变量是上例中的
+    for(var i in foo) {
+        if (foo.hasOwnProperty(i)) {
+            console.log(i);
+        }
+    }
+    
+    /*
+     这个版本的代码是唯一正确的写法。由于我们使用了 hasOwnProperty，所以这次只输出 moo。 如果不使用 hasOwnProperty，则这段代码在原生对象原型（比如 Object.prototype）被扩展时可能会出错。
+    */
+</script>
+</body>
+</html>
