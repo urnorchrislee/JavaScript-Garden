@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-原型属性</title>
+</head>
+<body>
+<script>
+    /*
+     当原型属性用来创建原型链时，可以把任何类型的值赋给它（prototype）。 然而将原子类型赋给 prototype 的操作将会被忽略。
+    */
+
+    function Foo() {}
+    Foo.prototype = 1; // 无效
+
+    /* 而将对象赋值给 prototype，正如上面的例子所示，将会动态的创建原型链。 */
+</script>
+</body>
+</html>
