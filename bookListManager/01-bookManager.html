@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+</head>
+<body>
+
+<script>
+    //01 提供一个数组，数组中的每一个元素都是一个对象(book对象)
+    var bookList = [
+        {name:"专业主义", author:"大前研一"},
+        {name:"红楼梦", author:"曹公子"},
+        {name:"什么事批判", author:"福柯"},
+        {name:"十万个为什么", author:"作者不详"}
+    ];
+
+    // 查询
+    for (var i = 0; i < bookList.length; i++) {
+        var obj = bookList[i];
+        if(obj.name == "红楼梦"){
+            console.log(obj.name + '-' + obj.author);
+            break;
+        }
+    }
+
+    // 添加
+    bookList.push({name:"C语言程序设计", author:"严巍敏"});
+
+    // 修改
+    for (var i = 0; i < bookList.length; i++) {
+        var obj = bookList[i];
+        if(obj.name == "十万个为什么"){
+            obj.author = "大神"
+        }
+    }
+
+    // 删除
+    for (var i = 0; i < bookList.length; i++) {
+        var obj = bookList[i];
+        if(obj.name == "红楼梦"){
+            bookList.splice(i, 1)
+        }
+    }
+    console.log(bookList);
+</script>
+
+</body>
+</html>
