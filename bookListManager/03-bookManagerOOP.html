@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02图书管理系统</title>
+</head>
+<body>
+
+<script>
+    //01 提供一个数组，数组中的每一个元素都是一个对象(book对象)
+
+    function BookList(){
+        this.bookList = null;
+    }
+
+    BookList.prototype = {
+        init : function(arrList){
+            this.bookList = arrList || [];
+        },
+        searchBook : function (name){
+            for (var i = 0; i < this.bookList.length; i++) {
+                var obj = this.bookList[i];
+                if(obj.name == name){
+                    return obj;
+                }
+            }
+            return null;
+        },
+        addBook : function (obj){
+            // 添加
+            this.bookList.push(obj);
+        },
+        updateBook : function (name, author){
+            // 修改
+            var o = this.searchBook(name);
+            o.author = author;
+        },
+        removeBook : function (name) {
+            var o = this.searchBook(name);
+            var index = this.bookList.indexOf(o);
+            this.bookList.splice(index, 1)
+        }
+    }
+
+    var bookList01 = new BookList();
+    bookList01.init([
+        {name:"专业主义",author:"大前研一"},
+        {name:"红楼梦",author:"曹公子"},
+        {name:"什么是批判",author:"福柯"},
+        {name:"十万个为什么？",author:"作者不详"}
+    ]);
+
+
+    console.log(bookList01.searchBook("十万个为什么？"));
+    bookList01.addBook({name:"C语言程序设计",author:"严为民"});
+    bookList01.updateBook("十万个为什么？","我");
+    bookList01.removeBook("专业主义");
+    console.log(bookList01);
+</script>
+
+</body>
+</html>
