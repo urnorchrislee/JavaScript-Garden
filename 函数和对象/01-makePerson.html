@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-makePerson</title>
+</head>
+<body>
+<script>
+    function makePerson(first, last){
+        return {
+            first : first,
+            last : last
+        }
+    }
+
+    function personFullName(person){
+        return person.first + ' ' + person.last;
+    }
+
+    function personFullNameReversed(person){
+        return person.last + ' ' + person.first;
+    }
+
+    var s = makePerson("chris", "lee");
+    console.log(personFullName(s));
+    console.log(personFullNameReversed(s));
+
+</script>
+</body>
+</html>
