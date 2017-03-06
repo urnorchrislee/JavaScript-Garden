@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-查找数组元素的位置</title>
+</head>
+<body>
+
+<script>
+    /*
+    解题思路1：最笨的办法，遍历数组中的元素，如果存在该元素，返回索引，否则返回-1
+    */
+    function indexOf1(arr, item) {
+        for (var i = 0; i < arr.length; i++) {
+            var val = arr[i];
+            if(item == val){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    function indexOf2(arr, item){
+        return arr.indexOf(item);
+    }
+
+    function indexOf3(arr, item){
+        if(Array.prototype.indexOf){
+            return arr.indexOf(item)
+        } else {
+            for(var i=0; i<arr.length; i++){
+                if(arr[i] == item){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+
+
+    console.log(indexOf([1, 2, 3, 4], 4));
+</script>
+</body>
+</html>
