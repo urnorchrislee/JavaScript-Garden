@@ -37,9 +37,39 @@
         return -1;
     }
 
+    console.log(indexOf3([1, 2, 3, 4], 4));
 
+    /* indexOf() 扩展 */
+    var array = [2, 5, 9];
+    console.log(array.indexOf(9)); //2
+    console.log(array.indexOf(7)); //-1
+    console.log(array.indexOf(9, 2));//2
+    console.log(array.indexOf(2, -1));//-1
+    console.log(array.indexOf(2, -3));//0
 
-    console.log(indexOf([1, 2, 3, 4], 4));
+    // 找出指定元素出现的所有位置
+    var indices = [];
+    var arrar2 = ['a','b','a','c','a','d'];
+    var element = 'a';
+    var idx = arrar2.indexOf(element);
+    while (idx != -1){
+        indices.push(idx);
+        idx = arrar2.indexOf(element, idx+1);
+    }
+    console.log(indices);
+
+    function updateArr(arr, item){
+        if(arr.indexOf(item) === -1){
+            arr.push(item);
+            console.log('更新数组' + arr);
+        } else if(arr.indexOf(item) > -1){
+            console.log(item + '在数组中存在');
+        }
+    }
+
+    var array3 = ['1', '2', '3'];
+    updateArr(array3, '1');
+    updateArr(array3, 1);
 </script>
 </body>
 </html>
