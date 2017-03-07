@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算给定数组 arr 中所有元素的总和 </title>
+</head>
+<body>
+
+<script>
+    /* 常规循环 */
+    /*function sum(arr) {
+        var result=0;
+        for (var i = 0; i < arr.length; i++) {
+            result += arr[i];
+        }
+        return result;
+    }*/
+
+    /* 函数式编程*/
+    /*function sum(arr){
+        return arr.reduce(function(accumulator, currentValue, currentIndex, array){
+            return accumulator + currentValue;
+        });
+    }*/
+
+    /* forEach遍历*/
+    /*function sum(arr){
+        var s=0;
+        arr.forEach(function(val, idx, arr){
+            s += val;
+        }, 0)
+        return s;
+    }*/
+
+    /* eval函数 */
+    function sum(arr){
+        return eval(arr.join("+"));
+    }
+    console.log(sum([1, 2, 3, 4, 5]));
+</script>
+
+</body>
+</html>
