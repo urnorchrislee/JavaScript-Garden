@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="padding: 100px">
+
+<canvas id="canvas" width="900" height="600" style="border: 1px solid #000;"></canvas>
+<br>
+<button dir=2>上</button>
+<button dir=0>左</button>
+<button dir=4>右</button>
+<button dir=6>下</button>
+
+<button dir=1>左上</button>
+<button dir=3>右上</button>
+<button dir=5>右下</button>
+<button dir=7>左下</button>
+
+<script>
+    // 获取标签
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+
+    // 帧动画
+    var image = new Image();
+    image.src = 'images/girl.png';
+
+    // 常量设置
+    var index = 0, dir = 0;
+
+    //当图片加载完
+    image.addEventListener('load', function () {
+
+        var self = this;
+
+        setInterval(function () {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.drawImage(self, index*256,dir*256,256,256, 100,100,256,256);
+
+            index++;
+            index %= 8;
+        }, 200)
+
+
+    });
+
+
+    // 监听按钮的点击事件
+    var buttonList = document.querySelectorAll('button');
+    for (var i = 0; i < buttonList.length; i++) {
+        buttonList[i].addEventListener('click', function () {
+            dir = this.getAttribute('dir');
+            console.log(dir);
+        })
+    }
+
+</script>
+
+</body>
+</html>
